@@ -20,13 +20,13 @@ export class MyPostsComponent implements OnInit {
     if(fileList.length > 0) {
       const file: File = fileList[0];
       this.myFire.uploadFile(file)
-        // .then(() => {
-        //   this.notifier.display('success', 'Picture Uploaded Successfully!');
-        //   this.myFire.handleImageUpload(data);
-        // })
-        // .catch(err => {
-        //   this.notifier.display('error', err.message)
-        // });
+        .then(data => {
+          this.notifier.display('success', 'Picture Uploaded Successfully!');
+          this.myFire.handleImageUpload(data);
+        })
+        .catch(err => {
+          this.notifier.display('error', err.message);
+        });
     }
   }
 }
