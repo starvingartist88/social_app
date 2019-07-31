@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     this.userService.statusChange.subscribe(userData => {
-      if (userData) {
+      if (userData && userData.emailVerified) {
         this.name = userData.name;
         this.email = userData.email;
         this.uid = userData.uid;
@@ -34,14 +34,13 @@ export class HeaderComponent implements OnInit {
     firebase.auth().onAuthStateChanged(userData => {
       if (userData) {
         this.isLoggedIn = true;
-
         const user = this.userService.getProfile(); 
         if (user && user.name) {
         this.name = user.name;
         this.email = user.email;
         this.uid = user.uid;
         }
-        this.router.navigate(['/myposts']);
+        this.router.navigate(['/']);
       } else {
         this.isLoggedIn = false;
       }

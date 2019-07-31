@@ -19,6 +19,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationComponent } from './notification/notification.component';
+import { PostComponent } from './shared/post/post.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NotificationComponent } from './notification/notification.component';
     LoginComponent,
     SignUpComponent,
     HomeComponent,
-    NotificationComponent
+    NotificationComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
-import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
 
 @Injectable()
 export class MyFireService {
@@ -15,8 +15,19 @@ export class MyFireService {
             .then(snapshot => snapshot.val());
     }
 
+    generateRandomName(){
+        let text = "";
+        const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+        for(let i = 0; i < 5; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text
+    }
+
     uploadFile(file) {
-        const fileName = 'abc.png';
+        const fileName = this.generateRandomName();
         const fileRef = firebase.storage().ref().child('image/' + fileName);
         const uploadTask = fileRef.put(file);
 
@@ -32,10 +43,9 @@ export class MyFireService {
     });
 }
 
-    
     handleImageUpload(data) {
 
-        const user = this.getUserFromDatabase.getProfile();
+        const user = this.user.getProfile();
 
         const newPersonalPostKey = firebase.database().ref().child('myposts').push().key;
         const personalPostDetails = {
@@ -69,4 +79,9 @@ export class MyFireService {
 
         return firebase.database().ref().update(updates);
     };
-}  
+
+    getUserPostsRef(uid) {
+        return firebase.database().ref('myposts').child(uid);
+    }
+
+}

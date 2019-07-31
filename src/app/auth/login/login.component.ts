@@ -29,10 +29,12 @@ export class LoginComponent implements OnInit {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(userData => {
-        if (userData) {
+        if (userData && userData.emailVerified) {
           return this.myFire.getUserFromDatabase(userData.uid);
         } else {
-          const message = 'Your email or password is incorrect.';
+          // const message = 'Your email or password is incorrect.';
+          const message = 'Your email is not yet verified.';
+
           this.notifier.display('error', message);
           firebase.auth().signOut();
         }
