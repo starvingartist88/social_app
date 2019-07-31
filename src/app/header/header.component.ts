@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
+import { UserService } from '../shared/user.service';
 
 
 @Component({
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
         this.email = user.email;
         this.uid = user.uid;
         }
-        this.router.navigate(['/']);
+        this.router.navigate(['/myposts']);
       } else {
         this.isLoggedIn = false;
       }
