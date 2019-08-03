@@ -22,7 +22,7 @@ export class MyPostsComponent implements OnInit {
       this.postLists.push({
         key: data.key,
         data: data.val()
-      })
+      });
     });
 
   } 
@@ -41,5 +41,9 @@ export class MyPostsComponent implements OnInit {
           this.notifier.display('error', err.message);
         });
     }
+  }
+
+  ngOnDestroy() {
+    this.personalPostRef.off();
   }
 }

@@ -9,7 +9,7 @@
         <span>{{imageData.name}}</span>
       </div>
   
-      <!-- <div *ngIf="imageData.creationDate" class="text-section-row row1">
+      <div *ngIf="imageData.creationDate" class="text-section-row row1">
         <span>Posted on: {{imageData.creationDate | date: 'MM/dd/yy'}}</span>
       </div>
   
@@ -21,7 +21,7 @@
         <span># of Fav: {{imageData.favoriteCount}}</span>
       </div>
   
-      <div class="text-section-row row4 action-row hvr-grow" *ngIf="displayFavoritesButton">
+      <!-- <div class="text-section-row row4 action-row hvr-grow" *ngIf="displayFavoritesButton">
         <span (click)="onFavoritesClicked()">
           <span class="glyphicon glyphicon-glass"></span>
           Add img to Favorites
