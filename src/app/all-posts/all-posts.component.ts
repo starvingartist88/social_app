@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as firebase from 'firebase'
 import * as _ from 'lodash';
 import { MyFireService } from '../shared/myfire.service';
-import { UserService } from '../shared/user.service';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-all-posts',
@@ -14,7 +14,10 @@ export class AllPostsComponent implements OnInit, OnDestroy {
   loadMoreRef: any;
   all: any = [];
 
-  constructor(private myFire: MyFireService, private user: UserService) { }
+
+  constructor(private myFire: MyFireService, private notifier: NotificationService) {
+
+  }
 
   ngOnInit() {
 
@@ -27,10 +30,12 @@ export class AllPostsComponent implements OnInit, OnDestroy {
     });
   } 
 
-  onLoadMore(){
+  onLoadMore() {
     if (this.all.length > 0) {
+
       const lastLoadedPost = _.last(this.all);
-      const lastLoadedPostKey = lastLoadedPost.key; 
+
+      const lastLoadedPostKey = lastLoadedPost.key;
 
       this.loadMoreRef = firebase.database().ref('allposts').startAt(null, lastLoadedPostKey).limitToFirst(2+1)
 
@@ -48,12 +53,31 @@ export class AllPostsComponent implements OnInit, OnDestroy {
   }
 }
 
-
   ngOnDestroy() {
     this.allRef.off();
     if (this.loadMoreRef){
       this.loadMoreRef.off();
     }
+  }
+
+  onFavoritesClicked(imageData) {
+    this.myFire.handleFavoriteClicked(imageData)
+    .then(data => {
+      this.notifier.display('success', 'Image added to favorites')
+    })
+    .catch(err => {
+      this.notifier.display('error', 'Oops! Something went wrong!')
+    })
+  }
+
+  onFollowClicked(imageData) {
+    this.myFire.followUser(imageData.uploadedBy)
+    .then(() => {
+      this.notifier.display('success', 'Following ' + imageData.uploadedBy.name + "!")
+    })
+    .catch(err => {
+      this.notifier.display('error', err);
+    });
   }
 
 }
