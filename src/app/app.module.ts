@@ -20,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationComponent } from './notification/notification.component';
 import { PostComponent } from './shared/post/post.component';
+import { MyFeedComponent } from './my-feed/my-feed.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { PostComponent } from './shared/post/post.component';
     SignUpComponent,
     HomeComponent,
     NotificationComponent,
-    PostComponent
+    PostComponent,
+    MyFeedComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
