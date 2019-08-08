@@ -6,7 +6,6 @@
     <ul class="nav navbar-nav">
       <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
       <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/allposts">Explore</a></li>
-      <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/my-feed">My Feed</a></li>
       <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/following">Following</a></li>
       <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/favorites">Favorites</a></li>
       <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/myposts">My Posts</a></li>

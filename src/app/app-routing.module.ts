@@ -9,7 +9,6 @@ import {FavoritesComponent} from "./favorites/favorites.component";
 import {MyPostsComponent} from "./my-posts/my-posts.component";
 import {SignUpComponent} from "./auth/sign-up/sign-up.component";
 import {LoginComponent} from "./auth/login/login.component";
-import {MyFeedComponent} from "./my-feed/my-feed.component";
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 
 
@@ -21,7 +20,6 @@ const routes: Routes = [
   { path: 'myposts', component: MyPostsComponent, canActivate: [RouteGuard]},
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'my-feed', component: MyFeedComponent },
   { path: 'edit-profile', component: EditProfileComponent }
 
 ];

@@ -20,7 +20,6 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationComponent } from './notification/notification.component';
 import { PostComponent } from './shared/post/post.component';
-import { MyFeedComponent } from './my-feed/my-feed.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
@@ -37,7 +36,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     HomeComponent,
     NotificationComponent,
     PostComponent,
-    MyFeedComponent,
     EditProfileComponent,
   ],
   imports: [
